@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Toko Kelontong Juragan MOD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -12,7 +13,7 @@
       overflow-x: hidden;
       color: white;
       height: auto;
-      position: relative;
+      scroll-behavior: smooth;
     }
 
     .stars {
@@ -26,6 +27,7 @@
       transform: translateY(0);
       opacity: 0.2;
       transition: transform 0.1s ease-out;
+      filter: brightness(1.2);
     }
 
     .overlay {
@@ -46,31 +48,21 @@
     }
 
     h1 {
+      font-family: 'Orbitron', sans-serif;
       font-size: 2.8rem;
-      background: linear-gradient(90deg, #00f7ff, #6e00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: animateTitle 3s ease-in-out infinite, neonPulse 4s ease-in-out infinite;
-      text-shadow: 0 0 15px #00f7ff;
+      color: cyan;
+      text-shadow: 0 0 8px #00ffff, 0 0 18px #00ffff, 0 0 28px #00ffff;
+      animation: pulseGlow 4s infinite ease-in-out;
     }
 
-    @keyframes animateTitle {
+    @keyframes pulseGlow {
       0%, 100% {
-        letter-spacing: 1px;
+        text-shadow: 0 0 8px #00ffff, 0 0 18px #00ffff, 0 0 28px #00ffff;
         transform: scale(1);
       }
       50% {
-        letter-spacing: 4px;
-        transform: scale(1.03);
-      }
-    }
-
-    @keyframes neonPulse {
-      0%, 100% {
-        text-shadow: 0 0 10px #00f7ff, 0 0 25px #6e00ff;
-      }
-      50% {
-        text-shadow: 0 0 20px #00f7ff, 0 0 35px #6e00ff;
+        text-shadow: 0 0 16px #00ffff, 0 0 32px #00ffff, 0 0 48px #00ffff;
+        transform: scale(1.02);
       }
     }
 
@@ -90,23 +82,42 @@
 
     .card {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border-radius: 20px;
       padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+      margin: 30px 0;
       text-align: center;
-      animation: fadeInCard 0.8s forwards ease;
+      animation: float 3s ease-in-out infinite, fadeInCard 0.8s forwards ease;
+      transition: all 0.4s ease;
+      position: relative;
+      box-shadow:
+        0 0 12px #00f7ff,
+        inset 0 0 12px #00ffff66,
+        0 0 28px rgba(0, 255, 255, 0.3);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      border-radius: 20px;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border: 2px solid #00f7ff33;
+      pointer-events: none;
+      box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        inset 0 0 10px #00f7ff;
     }
 
     .card h3 {
       font-size: 1.3rem;
       font-weight: bold;
-      text-shadow: 0 0 8px #00f7ff;
+      text-shadow: 0 0 8px #00ffff;
     }
 
     .card p {
       color: #bbb;
+      font-size: 0.95rem;
     }
 
     .btn {
@@ -150,6 +161,12 @@
         transform: translateY(0);
         opacity: 1;
       }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
     }
   </style>
 </head>
